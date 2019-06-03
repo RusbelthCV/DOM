@@ -1,0 +1,86 @@
+﻿@import url(http://fonts.googleapis.com/css?family=Frijole|Alef:700,400|Sarina|Handlee|Permanent+Marker);
+
+/* Etiquetes */
+
+html {
+	margin: 0px;
+	background: url(../imatges/fons.jpg);
+}
+body {
+	text-align: center;
+	padding: 0px;
+	margin: 0px auto;
+}
+
+header {
+	height:200px;
+	z-index:1;
+	padding: 25px;
+
+	font-family: Frijole, Arial, Helvetica, sans-serif;
+	font-size: 56px;
+	font-weight: bold;
+	color: #FFF;
+}
+
+img {
+	display: inline;
+}
+
+button{
+	font-family: 'Permanent Marker', Tahoma, Geneva, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	height: 50px;
+	bottom: 30px;
+	margin: 30px;
+	cursor: pointer;
+	
+}
+
+/* ID */
+
+/* id cartes */
+#cartes {
+	background-position: center;
+	text-align: center;
+	vertical-align: middle;
+	display: inline;
+}
+
+#cartes img {
+	width: 80px;
+}
+
+/* id lletres */
+
+#lletres {
+	background: url(../imatges/fons.png)  repeat-x top;
+	text-align: center;
+	padding: 15px;
+	height: 50px;
+	margin-right: auto;
+	margin-left: auto;
+	font: bold 26px Alef,cursive;
+	color: #FFCC66;
+	margin-top: 60px;
+}
+
+/* id botons */
+
+#boto {
+	z-index:6;
+	height: 200px;
+	margin-top: 150px;
+}
+
+#carta{
+	color:darkgreen;
+}
+
+#atura{
+	color:darkblue;	
+}
+#partida{
+	color:darkred;	
+}
