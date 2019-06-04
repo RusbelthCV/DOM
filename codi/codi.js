@@ -50,6 +50,29 @@ function stopMatch()
     {
        message.innerHTML = "Te has plantado con "+sumTotal;
     }
+    else if(sumTotal == 7.5)
+    {
+        message.innerHTML = "Felicidades has ganado! ";
+    }
+    let giveCard = document.getElementById("carta");
+    let stop = document.getElementById("atura");
+    let start = document.getElementById("partida");
+    
+    stop.removeAttribute("disabled");
+    stop.setAttribute("disabled","true");
+    stop.style.opacity =0.5;
+    
+    giveCard.removeAttribute("disabled");
+    giveCard.setAttribute("disabled","true");
+    giveCard.style.opacity = 0.5;
+    
+    start.removeAttribute("disabled");
+    start.style.opacity = 1;
+    start.innerHTML = "Nova partida";
+    start.addEventListener("click",function()
+    {
+        location.reload();
+    });
 }
 //In match
 function match()
