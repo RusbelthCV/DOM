@@ -33,13 +33,23 @@ function eventsButtons(started)
         card.addEventListener("click",giveCard);
 
         stop.style.opacity = 1;
-        stop.setAttribute("disabled","false");
+        stop.removeAttribute("disabled");
+        stop.addEventListener("click",stopMatch);
 
         start.style.opacity = 0.5;
         start.setAttribute("disabled","true");
         start.removeEventListener("click",match);
     }
     
+}
+//End game
+function stopMatch()
+{
+    let message = document.getElementById("lletres");
+    if(sumTotal < 7.5)
+    {
+       message.innerHTML = "Te has plantado con "+sumTotal;
+    }
 }
 //In match
 function match()
@@ -122,7 +132,6 @@ function sumCards(valueOfCard)
     {
         message();    
     }
-    
 }
 function message()
 {
@@ -151,6 +160,6 @@ function gameOver()
     start.innerHTML = "Nova partida";
     start.addEventListener("click",function()
     {
-        location.reload();    
+        location.reload();
     });
 }
