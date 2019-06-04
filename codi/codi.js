@@ -1,4 +1,8 @@
-var arrayCardsOnTable = [];/*The parameter passed for function is the state of match. False isn't started the match, true yes*/
+let arrayCardsOnTable = [];
+let sumTotal = 0;
+let characterCard = ['b','c','e','o'];
+let numberCard = [1,2,3,4,5,6,7,8,9,10,11,12];
+/*The parameter passed for function is the state of match. False isn't started the match, true yes*/
 window.onload = function()
 {
     eventsButtons(false);
@@ -19,7 +23,8 @@ function eventsButtons(started)
         stop.style.opacity = 0.5;
         stop.setAttribute("disabled","true");
 
-        start.addEventListener("click",match);    
+        start.removeAttribute("disabled");
+        start.addEventListener("click",match);
     }
     else
     {
@@ -40,14 +45,11 @@ function eventsButtons(started)
 function match()
 {
     eventsButtons(true);
-    
 }
 
 //give Card
 function giveCard()
 {
-    let characterCard = ['b','c','e','o'];
-    let numberCard = [1,2,3,4,5,6,7,8,9,10,11,12];
     
     let character = randomLetter();
     let number = randomNumber();
@@ -79,12 +81,76 @@ function showCard(character,number)
     }
     else
     {
-        while(arrayCardsOnTable.indexOf(resultCard) == -1)
+        if(arrayCardsOnTable.indexOf(resultCard) == -1)
         {
             let image = document.createElement("img");
             image.src = "imatges/"+resultCard+".png";
             cards.appendChild(image);
-            arrayCardsOnTable.push(resultCard);    
+            arrayCardsOnTable.push(resultCard);
+        }
+        else
+        {
+            while(arrayCardsOnTable.indexOf(resultCard) != -1)
+            {
+                character = randomLetter();
+                number = randomNumber();
+                resultCard = characterCard[character]+numberCard[number];
+            }
+            let image = document.createElement("img");
+            image.src = "imatges/"+resultCard+".png";
+            cards.appendChild(image);
+            arrayCardsOnTable.push(resultCard);
         }
     }
+    sumCards(number);
+}
+function sumCards(valueOfCard)
+{
+    if(valueOfCard <= 7)
+    {
+        sumTotal += valueOfCard;    
+    }
+    else
+    {
+        sumTotal += 0.5;
+    }
+    if(sumTotal > 7.5)
+    {
+        gameOver();
+    }
+    else
+    {
+        message();    
+    }
+    
+}
+function message()
+{
+    let sum = document.getElementById("lletres");
+    sum.innerHTML = sumTotal;
+}
+function gameOver()
+{
+    let sum = document.getElementById("lletres");
+    sum.innerHTML = "Has perdido con "+sumTotal;
+    
+    let giveCard = document.getElementById("carta");
+    let stop = document.getElementById("atura");
+    let start = document.getElementById("partida");
+    
+    stop.removeAttribute("disabled");
+    stop.setAttribute("disabled","true");
+    stop.style.opacity =0.5;
+    
+    giveCard.removeAttribute("disabled");
+    giveCard.setAttribute("disabled","true");
+    giveCard.style.opacity = 0.5;
+    
+    start.removeAttribute("disabled");
+    start.style.opacity = 1;
+    start.innerHTML = "Nova partida";
+    start.addEventListener("click",function()
+    {
+        location.reload();    
+    });
 }
