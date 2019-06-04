@@ -1,4 +1,4 @@
-/*The parameter passed for function is the state of match. False isn't started the match, true yes*/
+var arrayCardsOnTable = [];/*The parameter passed for function is the state of match. False isn't started the match, true yes*/
 window.onload = function()
 {
     eventsButtons(false);
@@ -71,34 +71,20 @@ function showCard(character,number)
     let cards = document.getElementById("cartes");
     let backCard = document.getElementById("carta01");
     let valueImage = backCard.getAttribute("src");
-    let arrayCardsOnTable = new Array();
     let resultCard = character+number;
-    if(valueImage == "imatges/back.png")
+    if(valueImage === "imatges/back.png")
     {
-        backCard.src = "imatges/"+resultCard+".png";
-        arrayCardsOnTable.push(resultCard);
+        backCard.src ="imatges/"+resultCard+".png";
+        arrayCardsOnTable.push(resultCard);        
     }
     else
     {
-        if(arrayCardsOnTable.indexOf(resultCard) == -1)
+        while(arrayCardsOnTable.indexOf(resultCard) == -1)
         {
             let image = document.createElement("img");
             image.src = "imatges/"+resultCard+".png";
-            arrayCardsOnTable.push(resultCard);
             cards.appendChild(image);
+            arrayCardsOnTable.push(resultCard);    
         }
-        else
-        {
-            while(arrayCardsOnTable.indexOf(resultCard) != -1)
-            {
-                character = randomLetter();
-                number = randomNumber();
-                let image = document.createElement("img");
-                image.src = "imatges/"+resultCard+".png";
-                arrayCardsOnTable.push(resultCard);
-                cards.appendChild(image);
-            }
-        }
-        
     }
 }
